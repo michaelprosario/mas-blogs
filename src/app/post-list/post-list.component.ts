@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { FeedDataService } from '../core/service/feed-data-service';
 
 @Component({
   selector: 'app-post-list',
@@ -7,8 +9,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PostListComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private feedDataService: FeedDataService
+  ) { }
 
-  ngOnInit() {}
+  recordId: string = "";
+  ngOnInit() {
+    this.recordId = this.route.snapshot.paramMap.get("id");
+    const feeds = this.feedDataService.getFeeds();
+    const feed = feeds.find ( feed => feed.id === this.recordId);
+
+    // get feed posts from feed
+    console.log(feed);
+
+
+    // get the data ...
+
+    
+  }
 
 }
