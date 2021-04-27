@@ -1,0 +1,7 @@
+{
+  "name": "mas-blogs",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
