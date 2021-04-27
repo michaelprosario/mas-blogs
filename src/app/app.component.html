@@ -4,10 +4,10 @@
             <ion-content>
                 <ion-list id="inbox-list">
                     <ion-list-header>MasBlogs</ion-list-header>
-                    <ion-note>My Blogs and Podcasts</ion-note>
+                    <ion-note>Your Blogs and Podcasts</ion-note>
 
                     <ion-menu-toggle auto-hide="false" *ngFor="let feed of feeds; let i = index">
-                        <ion-item routerDirection="root" lines="none" detail="false" routerLinkActive="selected" (click)="onFeedClick(feed)">
+                        <ion-item button routerDirection="root" lines="none" detail="false" routerLinkActive="selected" (click)="onFeedClick(feed)">
                             <ion-label>{{ feed.title }}</ion-label>
                         </ion-item>
                     </ion-menu-toggle>

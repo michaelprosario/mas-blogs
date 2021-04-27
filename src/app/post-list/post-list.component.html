@@ -1,3 +1,22 @@
-<p>
-  post-list works!
-</p>
+<ion-header>
+    <ion-toolbar class="new-background-color">
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>{{feedData.feed.title}}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+    <ion-list>
+        <ion-item *ngFor="let post of feedData.items" href="{{post.guid}}">
+            <ion-label>
+                <ion-text>
+                    <h3>{{post.title}}</h3>
+                </ion-text>
+            </ion-label>
+
+        </ion-item>
+    </ion-list>
+</ion-content>

@@ -1,11 +1,22 @@
 import { Injectable } from "@angular/core";
 import { Feed } from "../entity/feed";
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FeedDataService
 {
+  private rssToJsonServiceBaseUrl: string = 'https://rss2json.com/api.json?rss_url=';
+
+  constructor(
+    private http: HttpClient
+  ) { }
+
+  getFeed(url: string) {
+    return this.http.get(this.rssToJsonServiceBaseUrl + url).toPromise();
+  }
+
   getFeeds() {
     let feeds = new Array<Feed>();
 
@@ -38,6 +49,19 @@ export class FeedDataService
     feed5.title = ".NET Rocks";
     feed5.url = "http://www.pwop.com/feed.aspx?show=dotnetrocks&filetype=master";
     feeds.push(feed5);
+
+    const feed6 = new Feed();
+    feed6.id="6";
+    feed6.title = "Michael Hyatt";
+    feed6.url = "https://michaelhyatt.com/feed/";
+    feeds.push(feed6);
+
+    const feed7 = new Feed();
+    feed7.id="7";
+    feed7.title = "Chris Locurto";
+    feed7.url = "https://chrislocurto.com/feed/";
+    feeds.push(feed7);
+
 
     return feeds;
   }
